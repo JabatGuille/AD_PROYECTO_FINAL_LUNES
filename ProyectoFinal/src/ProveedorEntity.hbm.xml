@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Clases.ProveedorEntity" table="proveedor" schema="gestionproyectos">
+        <id name="codigoProveedor">
+            <column name="codigo_proveedor" sql-type="varchar(6)" length="6"/>
+        </id>
+        <property name="nombre">
+            <column name="nombre" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="apellido">
+            <column name="apellido" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="direccion">
+            <column name="direccion" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
