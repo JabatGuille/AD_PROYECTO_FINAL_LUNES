@@ -4,6 +4,10 @@
 
 package Vistas.Proveedores.Gestion;
 
+import Clases.PiezaEntity;
+import Clases.ProveedorEntity;
+import Conexiones.Conexiones;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -18,6 +22,45 @@ public class Proveedores extends JFrame {
 
     private void Limpar(ActionEvent e) {
         // TODO add your code here
+        CodigoProveedorTexto.setText("");
+        NombreProveedorTexto.setText("");
+        ApellidoProveedorTexto.setText("");
+        DireccionProveedorTexto.setText("");
+    }
+
+    private void Insertar(ActionEvent e) {
+        if (!CodigoProveedorTexto.getText().equals("") && !NombreProveedorTexto.getText().equals("") && !ApellidoProveedorTexto.getText().equals("") && !DireccionProveedorTexto.getText().equals("")) {
+            ProveedorEntity proveedor = new ProveedorEntity();
+            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText());
+            proveedor.setNombre(NombreProveedorTexto.getText());
+            proveedor.setApellido(ApellidoProveedorTexto.getText());
+            proveedor.setDireccion(DireccionProveedorTexto.getText());
+            Conexiones.insertarProveedor(proveedor);
+        }
+
+    }
+
+    private void Modificar(ActionEvent e) {
+        if (!CodigoProveedorTexto.getText().equals("") && !NombreProveedorTexto.getText().equals("") && !ApellidoProveedorTexto.getText().equals("") && !DireccionProveedorTexto.getText().equals("")) {
+            ProveedorEntity proveedor = new ProveedorEntity();
+            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText());
+            proveedor.setNombre(NombreProveedorTexto.getText());
+            proveedor.setApellido(ApellidoProveedorTexto.getText());
+            proveedor.setDireccion(DireccionProveedorTexto.getText());
+            Conexiones.modificarProveedor(proveedor);
+        }
+    }
+
+    private void Eliminar(ActionEvent e) {
+        // TODO add your code here
+        if (!CodigoProveedorTexto.getText().equals("") && !NombreProveedorTexto.getText().equals("") && !ApellidoProveedorTexto.getText().equals("") && !DireccionProveedorTexto.getText().equals("")) {
+            ProveedorEntity proveedor = new ProveedorEntity();
+            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText());
+            proveedor.setNombre(NombreProveedorTexto.getText());
+            proveedor.setApellido(ApellidoProveedorTexto.getText());
+            proveedor.setDireccion(DireccionProveedorTexto.getText());
+            Conexiones.eliminarProveedor(proveedor.getCodigoProveedor());
+        }
     }
 
     private void initComponents() {
@@ -93,23 +136,26 @@ public class Proveedores extends JFrame {
 
                 //---- EliminarButton ----
                 EliminarButton.setText("Eliminar");
+                EliminarButton.addActionListener(e -> Eliminar(e));
                 PanelGestion.add(EliminarButton);
                 EliminarButton.setBounds(310, 310, 78, 30);
 
                 //---- ModificarButton ----
                 ModificarButton.setText("Modificar");
+                ModificarButton.addActionListener(e -> Modificar(e));
                 PanelGestion.add(ModificarButton);
                 ModificarButton.setBounds(210, 310, 78, 30);
 
                 //---- InsertarButton ----
                 InsertarButton.setText("Insertar");
+                InsertarButton.addActionListener(e -> Insertar(e));
                 PanelGestion.add(InsertarButton);
                 InsertarButton.setBounds(110, 310, 78, 30);
 
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelGestion.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelGestion.getComponentCount(); i++) {
                         Rectangle bounds = PanelGestion.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -137,7 +183,7 @@ public class Proveedores extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelListado.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelListado.getComponentCount(); i++) {
                         Rectangle bounds = PanelListado.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -157,7 +203,7 @@ public class Proveedores extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

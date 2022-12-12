@@ -4,8 +4,13 @@
 
 package Vistas.Proyectos.Gestion;
 
+import Clases.ProveedorEntity;
+import Clases.ProyectoEntity;
+import Conexiones.Conexiones;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * @author unknown
@@ -14,6 +19,45 @@ public class Proyectos extends JFrame {
     public Proyectos() {
         initComponents();
         this.setVisible(true);
+    }
+
+    private void Limpar(ActionEvent e) {
+        // TODO add your code here
+        CodigoProyectoTexto.setText("");
+        NombreProyectoTexto.setText("");
+        CiudadProyectoTexto.setText("");
+    }
+
+    private void Insertar(ActionEvent e) {
+        if (!CodigoProyectoTexto.getText().equals("") && !NombreProyectoTexto.getText().equals("") && !CiudadProyectoTexto.getText().equals("")) {
+            ProyectoEntity proyecto = new ProyectoEntity();
+            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText());
+            proyecto.setNombre(NombreProyectoTexto.getText());
+            proyecto.setCiudad(CiudadProyectoTexto.getText());
+            Conexiones.insertarProyecto(proyecto);
+        }
+
+    }
+
+    private void Modificar(ActionEvent e) {
+        if (!CodigoProyectoTexto.getText().equals("") && !NombreProyectoTexto.getText().equals("") && !CiudadProyectoTexto.getText().equals("")) {
+            ProyectoEntity proyecto = new ProyectoEntity();
+            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText());
+            proyecto.setNombre(NombreProyectoTexto.getText());
+            proyecto.setCiudad(CiudadProyectoTexto.getText());
+            Conexiones.modificarProyecto(proyecto);
+        }
+    }
+
+    private void Eliminar(ActionEvent e) {
+        // TODO add your code here
+        if (!CodigoProyectoTexto.getText().equals("") && !NombreProyectoTexto.getText().equals("") && !CiudadProyectoTexto.getText().equals("")) {
+            ProyectoEntity proyecto = new ProyectoEntity();
+            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText());
+            proyecto.setNombre(NombreProyectoTexto.getText());
+            proyecto.setCiudad(CiudadProyectoTexto.getText());
+            Conexiones.eliminarProyecto(proyecto.getCodigoProyecto());
+        }
     }
 
     private void initComponents() {
@@ -95,7 +139,7 @@ public class Proyectos extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelGestion.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelGestion.getComponentCount(); i++) {
                         Rectangle bounds = PanelGestion.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -123,7 +167,7 @@ public class Proyectos extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelListado.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelListado.getComponentCount(); i++) {
                         Rectangle bounds = PanelListado.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -143,7 +187,7 @@ public class Proyectos extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
