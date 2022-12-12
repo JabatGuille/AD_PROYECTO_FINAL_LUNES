@@ -37,6 +37,12 @@ public class PantPrincipal extends JFrame {
         proveedores.setVisible(true);
     }
 
+    private void AYUDABUTTON(ActionEvent e) {
+        // TODO add your code here
+        Ayuda ayuda = new Ayuda();
+        ayuda.setVisible(true);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         menuBar1 = new JMenuBar();
@@ -60,6 +66,7 @@ public class PantPrincipal extends JFrame {
         CIUDADPROYECTO = new JMenuItem();
         GESTIONGLOBALmenu = new JMenu();
         AYUDABUTTON = new JMenuItem();
+        label1 = new JLabel();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -163,10 +170,16 @@ public class PantPrincipal extends JFrame {
 
             //---- AYUDABUTTON ----
             AYUDABUTTON.setText("Ayuda");
+            AYUDABUTTON.addActionListener(e -> AYUDABUTTON(e));
             menuBar1.add(AYUDABUTTON);
         }
         contentPane.add(menuBar1);
         menuBar1.setBounds(0, 0, 855, 22);
+
+        //---- label1 ----
+        label1.setIcon(new ImageIcon("C:\\Users\\Guillermo\\Desktop\\PROYECTO_FINAL_LUNES\\Logo\\Logo.png"));
+        contentPane.add(label1);
+        label1.setBounds(new Rectangle(new Point(-15, -30), label1.getPreferredSize()));
 
         contentPane.setPreferredSize(new Dimension(855, 415));
         pack();
@@ -196,5 +209,6 @@ public class PantPrincipal extends JFrame {
     private JMenuItem CIUDADPROYECTO;
     private JMenu GESTIONGLOBALmenu;
     private JMenuItem AYUDABUTTON;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
