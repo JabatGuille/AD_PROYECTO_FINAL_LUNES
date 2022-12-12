@@ -63,6 +63,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "LimparButton"
 						"text": "Limpiar"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Limpar", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"x": 15
 						"y": 310
@@ -70,6 +71,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "EliminarButton"
 						"text": "Eliminar"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Eliminar", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 78
 						"height": 30
@@ -79,6 +81,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "ModificarButton"
 						"text": "Modificar"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Modificar", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 78
 						"height": 30
@@ -88,6 +91,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "InsertarButton"
 						"text": "Insertar"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Insertar", true ) )
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 						"width": 78
 						"height": 30
@@ -95,7 +99,7 @@ new FormModel {
 						"y": 310
 					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": "Gestion de Proveedores"
+					"title": "Gestion de Proyectos"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "PanelListado"
@@ -111,7 +115,7 @@ new FormModel {
 						"height": 380
 					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": "Listado de Proveedores"
+					"title": "Listado de Proyectos"
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 545

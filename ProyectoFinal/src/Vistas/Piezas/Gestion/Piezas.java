@@ -144,9 +144,9 @@ public class Piezas extends JFrame {
                 //---- EliminarButton ----
                 EliminarButton.setText("Eliminar");
                 EliminarButton.addActionListener(e -> {
-                    Eliminar(e);
-                    Eliminar(e);
-                });
+			Eliminar(e);
+			Eliminar(e);
+		});
                 PanelGestion.add(EliminarButton);
                 EliminarButton.setBounds(310, 310, 110, 30);
 
@@ -167,7 +167,7 @@ public class Piezas extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for (int i = 0; i < PanelGestion.getComponentCount(); i++) {
+                    for(int i = 0; i < PanelGestion.getComponentCount(); i++) {
                         Rectangle bounds = PanelGestion.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -179,7 +179,7 @@ public class Piezas extends JFrame {
                     PanelGestion.setPreferredSize(preferredSize);
                 }
             }
-            tabbedPane1.addTab("Gestion de Proyectos", PanelGestion);
+            tabbedPane1.addTab("Gestion de Piezas", PanelGestion);
 
             //======== PanelListado ========
             {
@@ -195,7 +195,7 @@ public class Piezas extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for (int i = 0; i < PanelListado.getComponentCount(); i++) {
+                    for(int i = 0; i < PanelListado.getComponentCount(); i++) {
                         Rectangle bounds = PanelListado.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -207,7 +207,7 @@ public class Piezas extends JFrame {
                     PanelListado.setPreferredSize(preferredSize);
                 }
             }
-            tabbedPane1.addTab("Listado de Proveedores", PanelListado);
+            tabbedPane1.addTab("Listado de Piezas", PanelListado);
         }
         contentPane.add(tabbedPane1);
         tabbedPane1.setBounds(0, 0, 545, 415);
@@ -215,7 +215,7 @@ public class Piezas extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for (int i = 0; i < contentPane.getComponentCount(); i++) {
+            for(int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

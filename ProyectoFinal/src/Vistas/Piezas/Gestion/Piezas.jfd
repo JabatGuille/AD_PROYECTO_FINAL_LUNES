@@ -114,7 +114,7 @@ new FormModel {
 						"width": 350
 					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": "Gestion de Proyectos"
+					"title": "Gestion de Piezas"
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 					name: "PanelListado"
@@ -130,7 +130,7 @@ new FormModel {
 						"height": 380
 					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": "Listado de Proveedores"
+					"title": "Listado de Piezas"
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 545

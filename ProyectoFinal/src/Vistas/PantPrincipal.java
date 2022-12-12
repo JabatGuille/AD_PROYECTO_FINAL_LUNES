@@ -5,6 +5,8 @@
 package Vistas;
 
 import Vistas.Piezas.Gestion.Piezas;
+import Vistas.Proveedores.Gestion.Proveedores;
+import Vistas.Proyectos.Gestion.Proyectos;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -21,6 +23,18 @@ public class PantPrincipal extends JFrame {
     private void GESTIONPIEZAmenu(ActionEvent e) {
         Piezas piezas = new Piezas();
         piezas.setVisible(true);
+    }
+
+    private void GESTIONPROYECTOmenu(ActionEvent e) {
+        // TODO add your code here
+        Proyectos proyecto = new Proyectos();
+        proyecto.setVisible(true);
+    }
+
+    private void GESTIONPROVEEDORmenu(ActionEvent e) {
+        // TODO add your code here
+        Proveedores proveedores = new Proveedores();
+        proveedores.setVisible(true);
     }
 
     private void initComponents() {
@@ -64,6 +78,7 @@ public class PantPrincipal extends JFrame {
 
                 //---- GESTIONPROVEEDORmenu ----
                 GESTIONPROVEEDORmenu.setText("Gesti\u00f3n de Proveedores");
+                GESTIONPROVEEDORmenu.addActionListener(e -> GESTIONPROVEEDORmenu(e));
                 PROVEEDORESmenu.add(GESTIONPROVEEDORmenu);
 
                 //======== CONSULTAPROVEEDORESmenu ========
@@ -117,6 +132,7 @@ public class PantPrincipal extends JFrame {
 
                 //---- GESTIONPROYECTOmenu ----
                 GESTIONPROYECTOmenu.setText("Gesti\u00f3n de Proyectos");
+                GESTIONPROYECTOmenu.addActionListener(e -> GESTIONPROYECTOmenu(e));
                 PROYECTOSmenu.add(GESTIONPROYECTOmenu);
 
                 //======== CONSULTAPROYECTOSmenu ========

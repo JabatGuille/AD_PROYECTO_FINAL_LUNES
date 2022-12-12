@@ -19,6 +19,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "GESTIONPROVEEDORmenu"
 						"text": "Gestión de Proveedores"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "GESTIONPROVEEDORmenu", true ) )
 					} )
 					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 						name: "CONSULTAPROVEEDORESmenu"
@@ -64,6 +65,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "GESTIONPROYECTOmenu"
 						"text": "Gestión de Proyectos"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "GESTIONPROYECTOmenu", true ) )
 					} )
 					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
 						name: "CONSULTAPROYECTOSmenu"
