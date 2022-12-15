@@ -6,18 +6,9 @@ package Vistas.Piezas.Gestion;
 
 import Clases.PiezaEntity;
 import Conexiones.Conexiones;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 import java.awt.event.*;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.*;
-import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 
 /**
@@ -144,9 +135,9 @@ public class Piezas extends JFrame {
                 //---- EliminarButton ----
                 EliminarButton.setText("Eliminar");
                 EliminarButton.addActionListener(e -> {
-			Eliminar(e);
-			Eliminar(e);
-		});
+                    Eliminar(e);
+                    Eliminar(e);
+                });
                 PanelGestion.add(EliminarButton);
                 EliminarButton.setBounds(310, 310, 110, 30);
 
@@ -167,7 +158,7 @@ public class Piezas extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelGestion.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelGestion.getComponentCount(); i++) {
                         Rectangle bounds = PanelGestion.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -195,7 +186,7 @@ public class Piezas extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelListado.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelListado.getComponentCount(); i++) {
                         Rectangle bounds = PanelListado.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -215,7 +206,7 @@ public class Piezas extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
