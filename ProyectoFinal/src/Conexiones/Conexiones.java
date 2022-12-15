@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Conexiones {
 
@@ -210,6 +211,86 @@ public class Conexiones {
         session.close();
     }
 
+    public static ArrayList<ProveedorEntity> listaProveedor() {
+        ArrayList<ProveedorEntity> proveedores = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
 
+        for (Object value : session.createSQLQuery("SELECT * FROM proveedor").list()) {
+            Object[] lista = (Object[]) value;
+            ProveedorEntity p = new ProveedorEntity();
+            p.setCodigoProveedor((String) lista[0]);
+            p.setNombre((String) lista[1]);
+            p.setApellido((String) lista[2]);
+            p.setDireccion((String) lista[3]);
+            proveedores.add(p);
+        }
+        tx.commit();
+        session.close();
+        return proveedores;
+    }
 
+    public static ArrayList<PiezaEntity> listaPieza() {
+        ArrayList<PiezaEntity> piezas = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        for (Object value : session.createSQLQuery("SELECT * FROM pieza").list()) {
+            Object[] lista = (Object[]) value;
+            PiezaEntity p = new PiezaEntity();
+            p.setCodigoPieza((String) lista[0]);
+            p.setNombre((String) lista[1]);
+            p.setPrecio((Double) lista[2]);
+            p.setDescripcion((String) lista[3]);
+            piezas.add(p);
+        }
+        tx.commit();
+        session.close();
+        return piezas;
+    }
+
+    public static ArrayList<ProyectoEntity> listaProyecto() {
+        ArrayList<ProyectoEntity> proyectos = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        for (Object value : session.createSQLQuery("SELECT * FROM proyecto").list()) {
+            Object[] lista = (Object[]) value;
+            ProyectoEntity p = new ProyectoEntity();
+            p.setCodigoProyecto((String) lista[0]);
+            p.setNombre((String) lista[1]);
+            p.setCiudad((String) lista[2]);
+            proyectos.add(p);
+        }
+        tx.commit();
+        session.close();
+        return proyectos;
+    }
+
+    public static ArrayList<ProveedorEntity> listaPosiblesProveedores(String busqueda, String campo) {
+        ArrayList<ProveedorEntity> proveedor = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        busqueda = "'%" + busqueda.toLowerCase() + "%'";
+        for (Object value : session.createSQLQuery("SELECT * FROM proveedor  WHERE LOWER(" + campo + ") LIKE " + busqueda + "").list()) {
+            Object[] lista = (Object[]) value;
+            ProveedorEntity p = new ProveedorEntity();
+            p.setCodigoProveedor((String) lista[0]);
+            p.setNombre((String) lista[1]);
+            p.setDireccion((String) lista[2]);
+            proveedor.add(p);
+        }
+        tx.commit();
+        session.close();
+        return proveedor;
+    }
 }

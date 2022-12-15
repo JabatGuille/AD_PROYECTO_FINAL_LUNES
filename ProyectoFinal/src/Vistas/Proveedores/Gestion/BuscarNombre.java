@@ -4,8 +4,13 @@
 
 package Vistas.Proveedores.Gestion;
 
+import Clases.ProveedorEntity;
+import Conexiones.Conexiones;
+
+import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * @author unknown
@@ -13,6 +18,34 @@ import java.awt.*;
 public class BuscarNombre extends JFrame {
     public BuscarNombre() {
         initComponents();
+    }
+
+    ArrayList<ProveedorEntity> proveedores;
+
+    private void botonBusqueda(ActionEvent e) {
+        // TODO add your code here
+
+        if (!textoBusqueda.getText().equals("")) {
+            proveedores = Conexiones.listaPosiblesProveedores(textoBusqueda.getText(), "nombre");
+            construirSpinner();
+        }
+    }
+
+    public void construirSpinner() {
+        comboCodigos.removeAllItems();
+        for (ProveedorEntity proveedore : proveedores) {
+            comboCodigos.addItem(proveedore.getNombre());
+        }
+
+    }
+
+    private void comboCodigos(ActionEvent e) {
+        // TODO add your code here
+        ProveedorEntity proveedor = proveedores.get(comboCodigos.getSelectedIndex());
+        textoArea.setText("CODIGO :" + proveedor.getCodigoProveedor() + "\n"
+                + "NOMBRE :" + proveedor.getNombre()+"\n"+
+                "APELLIDOS :"+proveedor.getApellido()+"\n"+
+                "DIRECCION :"+proveedor.getDireccion()+"\n");
     }
 
     private void initComponents() {
@@ -37,13 +70,20 @@ public class BuscarNombre extends JFrame {
 
         //---- botonBusqueda ----
         botonBusqueda.setText("Buscar Proveedor");
+        botonBusqueda.addActionListener(e -> botonBusqueda(e));
         contentPane.add(botonBusqueda);
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
+
+        //---- comboCodigos ----
+        comboCodigos.addActionListener(e -> comboCodigos(e));
         contentPane.add(comboCodigos);
         comboCodigos.setBounds(60, 105, 525, comboCodigos.getPreferredSize().height);
 
         //======== scrollPane1 ========
         {
+
+            //---- textoArea ----
+            textoArea.setEditable(false);
             scrollPane1.setViewportView(textoArea);
         }
         contentPane.add(scrollPane1);

@@ -5,6 +5,7 @@
 package Vistas;
 
 import Vistas.Piezas.Gestion.Piezas;
+import Vistas.Proveedores.Gestion.BuscarNombre;
 import Vistas.Proveedores.Gestion.Proveedores;
 import Vistas.Proyectos.Gestion.Proyectos;
 
@@ -49,6 +50,8 @@ public class PantPrincipal extends JFrame {
 
     private void NOMBREPROVEEDORmenu(ActionEvent e) {
         // TODO add your code here
+        BuscarNombre nombre = new BuscarNombre();
+        nombre.setVisible(true);
     }
 
     private void CIUDADCONSULTAPROVEEDOR(ActionEvent e) {
@@ -112,7 +115,10 @@ public class PantPrincipal extends JFrame {
 
                     //---- NOMBREPROVEEDORmenu ----
                     NOMBREPROVEEDORmenu.setText("Nombre");
-                    NOMBREPROVEEDORmenu.addActionListener(e -> NOMBREPROVEEDORmenu(e));
+                    NOMBREPROVEEDORmenu.addActionListener(e -> {
+			NOMBREPROVEEDORmenu(e);
+			NOMBREPROVEEDORmenu(e);
+		});
                     CONSULTAPROVEEDORESmenu.add(NOMBREPROVEEDORmenu);
 
                     //---- CIUDADCONSULTAPROVEEDOR ----

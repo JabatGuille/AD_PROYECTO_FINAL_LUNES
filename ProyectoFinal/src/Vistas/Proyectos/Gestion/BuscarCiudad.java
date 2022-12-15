@@ -4,6 +4,9 @@
 
 package Vistas.Proyectos.Gestion;
 
+import Conexiones.Conexiones;
+
+import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +16,10 @@ import java.awt.*;
 public class BuscarCiudad extends JFrame {
     public BuscarCiudad() {
         initComponents();
+    }
+
+    private void botonBusqueda(ActionEvent e) {
+        // TODO add your code here
     }
 
     private void initComponents() {
@@ -37,6 +44,7 @@ public class BuscarCiudad extends JFrame {
 
         //---- botonBusqueda ----
         botonBusqueda.setText("Buscar Proyecto");
+        botonBusqueda.addActionListener(e -> botonBusqueda(e));
         contentPane.add(botonBusqueda);
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
         contentPane.add(comboCodigos);
@@ -44,6 +52,9 @@ public class BuscarCiudad extends JFrame {
 
         //======== scrollPane1 ========
         {
+
+            //---- textoArea ----
+            textoArea.setEditable(false);
             scrollPane1.setViewportView(textoArea);
         }
         contentPane.add(scrollPane1);

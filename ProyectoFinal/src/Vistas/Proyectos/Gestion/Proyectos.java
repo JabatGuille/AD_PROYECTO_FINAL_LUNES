@@ -4,13 +4,17 @@
 
 package Vistas.Proyectos.Gestion;
 
+import javax.swing.event.*;
+
 import Clases.ProveedorEntity;
 import Clases.ProyectoEntity;
 import Conexiones.Conexiones;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 /**
  * @author unknown
@@ -60,6 +64,23 @@ public class Proyectos extends JFrame {
         }
     }
 
+    private void tabbedPane1StateChanged(ChangeEvent e) {
+        // TODO add your code here
+        setTabla();
+    }
+
+    public void setTabla() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Codigo Proyecto");
+        model.addColumn("Nombre");
+        model.addColumn("Ciudad");
+        ArrayList<ProyectoEntity> proyectos = Conexiones.listaProyecto();
+        for (ProyectoEntity proyecto : proyectos) {
+            model.addRow(new Object[]{proyecto.getCodigoProyecto(), proyecto.getNombre(), proyecto.getCiudad()});
+        }
+        TablaProyectos.setModel(model);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         tabbedPane1 = new JTabbedPane();
@@ -77,7 +98,7 @@ public class Proyectos extends JFrame {
         InsertarButton = new JButton();
         PanelListado = new JPanel();
         scrollPane1 = new JScrollPane();
-        TablaProveedor = new JTable();
+        TablaProyectos = new JTable();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -85,6 +106,7 @@ public class Proyectos extends JFrame {
 
         //======== tabbedPane1 ========
         {
+            tabbedPane1.addChangeListener(e -> tabbedPane1StateChanged(e));
 
             //======== PanelGestion ========
             {
@@ -143,7 +165,7 @@ public class Proyectos extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelGestion.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelGestion.getComponentCount(); i++) {
                         Rectangle bounds = PanelGestion.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -163,7 +185,7 @@ public class Proyectos extends JFrame {
 
                 //======== scrollPane1 ========
                 {
-                    scrollPane1.setViewportView(TablaProveedor);
+                    scrollPane1.setViewportView(TablaProyectos);
                 }
                 PanelListado.add(scrollPane1);
                 scrollPane1.setBounds(5, 0, 540, 380);
@@ -171,7 +193,7 @@ public class Proyectos extends JFrame {
                 {
                     // compute preferred size
                     Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < PanelListado.getComponentCount(); i++) {
+                    for (int i = 0; i < PanelListado.getComponentCount(); i++) {
                         Rectangle bounds = PanelListado.getComponent(i).getBounds();
                         preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                         preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -191,7 +213,7 @@ public class Proyectos extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -223,6 +245,6 @@ public class Proyectos extends JFrame {
     private JButton InsertarButton;
     private JPanel PanelListado;
     private JScrollPane scrollPane1;
-    private JTable TablaProveedor;
+    private JTable TablaProyectos;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

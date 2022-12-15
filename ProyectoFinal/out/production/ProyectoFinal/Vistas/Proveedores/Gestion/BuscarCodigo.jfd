@@ -7,10 +7,10 @@ new FormModel {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "Escribe la direccion o parte de la direccion"
+				"text": "Escribe el codigo o parte del codigo"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 30
-				"y": 40
+				"x": 35
+				"y": 35
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textoBusqueda"
@@ -38,7 +38,6 @@ new FormModel {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textoArea"
-					"editable": false
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 70

@@ -4,12 +4,22 @@
 
 package Vistas.Piezas.Gestion;
 
+import javax.crypto.SecretKey;
+import javax.swing.event.*;
+
 import Clases.PiezaEntity;
 import Conexiones.Conexiones;
 
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author unknown
@@ -63,6 +73,24 @@ public class Piezas extends JFrame {
         }
     }
 
+    private void tabbedPane1StateChanged(ChangeEvent e) {
+        // TODO add your code here
+        setTabla();
+    }
+
+    public void setTabla() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Codigo Pieza");
+        model.addColumn("Nombre");
+        model.addColumn("Precio");
+        model.addColumn("Descripcion");
+        ArrayList<PiezaEntity> piezas = Conexiones.listaPieza();
+        for (PiezaEntity pieza : piezas) {
+            model.addRow(new Object[]{pieza.getCodigoPieza(), pieza.getNombre(), pieza.getPrecio(), pieza.getDescripcion()});
+        }
+        TablaPieza.setModel(model);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         tabbedPane1 = new JTabbedPane();
@@ -90,6 +118,7 @@ public class Piezas extends JFrame {
 
         //======== tabbedPane1 ========
         {
+            tabbedPane1.addChangeListener(e -> tabbedPane1StateChanged(e));
 
             //======== PanelGestion ========
             {

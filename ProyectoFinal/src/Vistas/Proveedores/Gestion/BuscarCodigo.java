@@ -4,6 +4,9 @@
 
 package Vistas.Proveedores.Gestion;
 
+import Conexiones.Conexiones;
+
+import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +16,13 @@ import java.awt.*;
 public class BuscarCodigo extends JFrame {
     public BuscarCodigo() {
         initComponents();
+    }
+
+    private void botonBusqueda(ActionEvent e) {
+        // TODO add your code here
+
+        if (!textoBusqueda.getText().equals("")){
+            Conexiones.listaPosiblesProveedores(textoBusqueda.getText(),"codigo_proveedor");}
     }
 
     private void initComponents() {
@@ -37,6 +47,7 @@ public class BuscarCodigo extends JFrame {
 
         //---- botonBusqueda ----
         botonBusqueda.setText("Buscar Proveedor");
+        botonBusqueda.addActionListener(e -> botonBusqueda(e));
         contentPane.add(botonBusqueda);
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
         contentPane.add(comboCodigos);
@@ -44,6 +55,9 @@ public class BuscarCodigo extends JFrame {
 
         //======== scrollPane1 ========
         {
+
+            //---- textoArea ----
+            textoArea.setEditable(false);
             scrollPane1.setViewportView(textoArea);
         }
         contentPane.add(scrollPane1);

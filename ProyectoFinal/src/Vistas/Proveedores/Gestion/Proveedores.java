@@ -4,13 +4,18 @@
 
 package Vistas.Proveedores.Gestion;
 
+import javax.swing.event.*;
+
 import Clases.PiezaEntity;
 import Clases.ProveedorEntity;
+import Clases.ProyectoEntity;
 import Conexiones.Conexiones;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @author unknown
@@ -63,6 +68,24 @@ public class Proveedores extends JFrame {
         }
     }
 
+    private void tabbedPane1StateChanged(ChangeEvent e) {
+        // TODO add your code here
+        setTabla();
+    }
+
+    public void setTabla() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Codigo Proveedor");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Direccion");
+        ArrayList<ProveedorEntity> proveedores = Conexiones.listaProveedor();
+        for (ProveedorEntity proveedor : proveedores) {
+            model.addRow(new Object[]{proveedor.getCodigoProveedor(), proveedor.getNombre(), proveedor.getApellido(), proveedor.getDireccion()});
+        }
+        TablaProveedor.setModel(model);
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         tabbedPane1 = new JTabbedPane();
@@ -82,7 +105,7 @@ public class Proveedores extends JFrame {
         InsertarButton = new JButton();
         PanelListado = new JPanel();
         scrollPane1 = new JScrollPane();
-        TablaProyectos = new JTable();
+        TablaProveedor = new JTable();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -90,6 +113,7 @@ public class Proveedores extends JFrame {
 
         //======== tabbedPane1 ========
         {
+            tabbedPane1.addChangeListener(e -> tabbedPane1StateChanged(e));
 
             //======== PanelGestion ========
             {
@@ -175,7 +199,7 @@ public class Proveedores extends JFrame {
 
                 //======== scrollPane1 ========
                 {
-                    scrollPane1.setViewportView(TablaProyectos);
+                    scrollPane1.setViewportView(TablaProveedor);
                 }
                 PanelListado.add(scrollPane1);
                 scrollPane1.setBounds(5, 0, 540, 380);
@@ -237,6 +261,6 @@ public class Proveedores extends JFrame {
     private JButton InsertarButton;
     private JPanel PanelListado;
     private JScrollPane scrollPane1;
-    private JTable TablaProyectos;
+    private JTable TablaProveedor;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

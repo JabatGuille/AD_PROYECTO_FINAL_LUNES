@@ -44,6 +44,9 @@ public class BuscarCodigo extends JFrame {
 
         //======== scrollPane1 ========
         {
+
+            //---- textoArea ----
+            textoArea.setEditable(false);
             scrollPane1.setViewportView(textoArea);
         }
         contentPane.add(scrollPane1);
