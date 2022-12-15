@@ -101,7 +101,6 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "text"
 				"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\Guillermo\\Desktop\\PROYECTO_FINAL_LUNES\\Logo\\Logo.png" )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": -15

@@ -43,6 +43,19 @@ public class PantPrincipal extends JFrame {
         ayuda.setVisible(true);
     }
 
+    private void CODIGOPROVEEDORES(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void NOMBREPROVEEDORmenu(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void CIUDADCONSULTAPROVEEDOR(ActionEvent e) {
+        // TODO add your code here
+
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         menuBar1 = new JMenuBar();
@@ -94,14 +107,17 @@ public class PantPrincipal extends JFrame {
 
                     //---- CODIGOPROVEEDORES ----
                     CODIGOPROVEEDORES.setText("C\u00f3digo");
+                    CODIGOPROVEEDORES.addActionListener(e -> CODIGOPROVEEDORES(e));
                     CONSULTAPROVEEDORESmenu.add(CODIGOPROVEEDORES);
 
                     //---- NOMBREPROVEEDORmenu ----
                     NOMBREPROVEEDORmenu.setText("Nombre");
+                    NOMBREPROVEEDORmenu.addActionListener(e -> NOMBREPROVEEDORmenu(e));
                     CONSULTAPROVEEDORESmenu.add(NOMBREPROVEEDORmenu);
 
                     //---- CIUDADCONSULTAPROVEEDOR ----
                     CIUDADCONSULTAPROVEEDOR.setText("Ciudad");
+                    CIUDADCONSULTAPROVEEDOR.addActionListener(e -> CIUDADCONSULTAPROVEEDOR(e));
                     CONSULTAPROVEEDORESmenu.add(CIUDADCONSULTAPROVEEDOR);
                 }
                 PROVEEDORESmenu.add(CONSULTAPROVEEDORESmenu);
