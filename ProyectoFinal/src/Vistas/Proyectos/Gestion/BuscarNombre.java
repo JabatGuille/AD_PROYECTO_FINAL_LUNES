@@ -4,7 +4,12 @@
 
 package Vistas.Proyectos.Gestion;
 
+import Clases.ProyectoEntity;
+import Conexiones.Conexiones;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -14,7 +19,32 @@ public class BuscarNombre extends JFrame {
     public BuscarNombre() {
         initComponents();
     }
+    ArrayList<ProyectoEntity> proyectos;
 
+    private void botonBusqueda(ActionEvent e) {
+        // TODO add your code here
+
+        if (!textoBusqueda.getText().equals("")) {
+            proyectos = Conexiones.listaPosiblesProyectos(textoBusqueda.getText(), "nombre");
+            construirSpinner();
+        }
+    }
+
+    public void construirSpinner() {
+        comboCodigos.removeAllItems();
+        for (ProyectoEntity proyecto : proyectos) {
+            comboCodigos.addItem(proyecto.getNombre());
+        }
+
+    }
+
+    private void comboCodigos(ActionEvent e) {
+        // TODO add your code here
+        ProyectoEntity proyecto = proyectos.get(comboCodigos.getSelectedIndex());
+        textoArea.setText("CODIGO :" + proyecto.getCodigoProyecto() + "\n"
+                + "NOMBRE :" + proyecto.getNombre() + "\n" +
+                "CIUDAD :" + proyecto.getCiudad() + "\n");
+    }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label1 = new JLabel();

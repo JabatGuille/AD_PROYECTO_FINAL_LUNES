@@ -75,7 +75,10 @@ public class BuscarNombre extends JFrame {
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
 
         //---- comboCodigos ----
-        comboCodigos.addActionListener(e -> comboCodigos(e));
+        comboCodigos.addActionListener(e -> {
+			comboCodigos(e);
+			comboCodigos(e);
+		});
         contentPane.add(comboCodigos);
         comboCodigos.setBounds(60, 105, 525, comboCodigos.getPreferredSize().height);
 

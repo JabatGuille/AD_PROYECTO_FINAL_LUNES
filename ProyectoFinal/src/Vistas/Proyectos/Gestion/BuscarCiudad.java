@@ -4,11 +4,14 @@
 
 package Vistas.Proyectos.Gestion;
 
+import Clases.PiezaEntity;
+import Clases.ProyectoEntity;
 import Conexiones.Conexiones;
 
 import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * @author unknown
@@ -18,8 +21,31 @@ public class BuscarCiudad extends JFrame {
         initComponents();
     }
 
+    ArrayList<ProyectoEntity> proyectos;
+
     private void botonBusqueda(ActionEvent e) {
         // TODO add your code here
+
+        if (!textoBusqueda.getText().equals("")) {
+            proyectos = Conexiones.listaPosiblesProyectos(textoBusqueda.getText(), "ciudad");
+            construirSpinner();
+        }
+    }
+
+    public void construirSpinner() {
+        comboCodigos.removeAllItems();
+        for (ProyectoEntity proyecto : proyectos) {
+            comboCodigos.addItem(proyecto.getCiudad());
+        }
+
+    }
+
+    private void comboCodigos(ActionEvent e) {
+        // TODO add your code here
+        ProyectoEntity proyecto = proyectos.get(comboCodigos.getSelectedIndex());
+        textoArea.setText("CODIGO :" + proyecto.getCodigoProyecto() + "\n"
+                + "NOMBRE :" + proyecto.getNombre() + "\n" +
+                "CIUDAD :" + proyecto.getCiudad() + "\n");
     }
 
     private void initComponents() {
@@ -63,7 +89,7 @@ public class BuscarCiudad extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

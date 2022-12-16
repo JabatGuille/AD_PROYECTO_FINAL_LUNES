@@ -4,8 +4,14 @@
 
 package Vistas.Piezas.Gestion;
 
+import Clases.PiezaEntity;
+import Clases.ProveedorEntity;
+import Conexiones.Conexiones;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 /**
  * @author unknown
@@ -13,6 +19,34 @@ import java.awt.*;
 public class BuscarCodigo extends JFrame {
     public BuscarCodigo() {
         initComponents();
+    }
+
+    ArrayList<PiezaEntity> piezas;
+
+    private void botonBusqueda(ActionEvent e) {
+        // TODO add your code here
+
+        if (!textoBusqueda.getText().equals("")) {
+            piezas = Conexiones.listaPosiblesPiezas(textoBusqueda.getText(), "codigo_pieza");
+            construirSpinner();
+        }
+    }
+
+    public void construirSpinner() {
+        comboCodigos.removeAllItems();
+        for (PiezaEntity pieza : piezas) {
+            comboCodigos.addItem(pieza.getCodigoPieza());
+        }
+
+    }
+
+    private void comboCodigos(ActionEvent e) {
+        // TODO add your code here
+        PiezaEntity pieza = piezas.get(comboCodigos.getSelectedIndex());
+        textoArea.setText("CODIGO :" + pieza.getCodigoPieza() + "\n"
+                + "NOMBRE :" + pieza.getNombre() + "\n" +
+                "PRECIO :" + pieza.getPrecio() + "\n" +
+                "DESCRIPCION :" + pieza.getDescripcion() + "\n");
     }
 
     private void initComponents() {
@@ -55,7 +89,7 @@ public class BuscarCodigo extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

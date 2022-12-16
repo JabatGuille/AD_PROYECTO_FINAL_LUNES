@@ -286,11 +286,55 @@ public class Conexiones {
             ProveedorEntity p = new ProveedorEntity();
             p.setCodigoProveedor((String) lista[0]);
             p.setNombre((String) lista[1]);
-            p.setDireccion((String) lista[2]);
+            p.setApellido((String) lista[2]);
+            p.setDireccion((String) lista[3]);
             proveedor.add(p);
         }
         tx.commit();
         session.close();
         return proveedor;
+    }
+
+    public static ArrayList<PiezaEntity> listaPosiblesPiezas(String busqueda, String campo) {
+        ArrayList<PiezaEntity> pieza = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        busqueda = "'%" + busqueda.toLowerCase() + "%'";
+        for (Object value : session.createSQLQuery("SELECT * FROM pieza  WHERE LOWER(" + campo + ") LIKE " + busqueda + "").list()) {
+            Object[] lista = (Object[]) value;
+            PiezaEntity p = new PiezaEntity();
+            p.setCodigoPieza((String) lista[0]);
+            p.setNombre((String) lista[1]);
+            p.setPrecio((double) lista[2]);
+            p.setDescripcion((String) lista[3]);
+            pieza.add(p);
+        }
+        tx.commit();
+        session.close();
+        return pieza;
+    }
+
+    public static ArrayList<ProyectoEntity> listaPosiblesProyectos(String busqueda, String campo) {
+        ArrayList<ProyectoEntity> proyectos = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        busqueda = "'%" + busqueda.toLowerCase() + "%'";
+        for (Object value : session.createSQLQuery("SELECT * FROM proyecto  WHERE LOWER(" + campo + ") LIKE " + busqueda + "").list()) {
+            Object[] lista = (Object[]) value;
+            ProyectoEntity p = new ProyectoEntity();
+            p.setCodigoProyecto((String) lista[0]);
+            p.setNombre((String) lista[1]);
+            p.setCiudad((String) lista[2]);
+            proyectos.add(p);
+        }
+        tx.commit();
+        session.close();
+        return proyectos;
     }
 }

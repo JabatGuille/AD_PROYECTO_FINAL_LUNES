@@ -37,7 +37,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "CIUDADCONSULTAPROVEEDOR"
-							"text": "Ciudad"
+							"text": "Direccion"
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CIUDADCONSULTAPROVEEDOR", true ) )
 						} )
 					} )

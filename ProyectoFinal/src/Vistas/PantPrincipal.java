@@ -5,6 +5,8 @@
 package Vistas;
 
 import Vistas.Piezas.Gestion.Piezas;
+import Vistas.Proveedores.Gestion.BuscarCodigo;
+import Vistas.Proveedores.Gestion.BuscarDireccion;
 import Vistas.Proveedores.Gestion.BuscarNombre;
 import Vistas.Proveedores.Gestion.Proveedores;
 import Vistas.Proyectos.Gestion.Proyectos;
@@ -46,6 +48,8 @@ public class PantPrincipal extends JFrame {
 
     private void CODIGOPROVEEDORES(ActionEvent e) {
         // TODO add your code here
+        BuscarCodigo codigo = new BuscarCodigo();
+        codigo.setVisible(true);
     }
 
     private void NOMBREPROVEEDORmenu(ActionEvent e) {
@@ -56,6 +60,8 @@ public class PantPrincipal extends JFrame {
 
     private void CIUDADCONSULTAPROVEEDOR(ActionEvent e) {
         // TODO add your code here
+        BuscarDireccion direccion = new BuscarDireccion();
+        direccion.setVisible(true);
 
     }
 
@@ -122,7 +128,7 @@ public class PantPrincipal extends JFrame {
                     CONSULTAPROVEEDORESmenu.add(NOMBREPROVEEDORmenu);
 
                     //---- CIUDADCONSULTAPROVEEDOR ----
-                    CIUDADCONSULTAPROVEEDOR.setText("Ciudad");
+                    CIUDADCONSULTAPROVEEDOR.setText("Direccion");
                     CIUDADCONSULTAPROVEEDOR.addActionListener(e -> CIUDADCONSULTAPROVEEDOR(e));
                     CONSULTAPROVEEDORESmenu.add(CIUDADCONSULTAPROVEEDOR);
                 }

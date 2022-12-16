@@ -4,8 +4,13 @@
 
 package Vistas.Piezas.Gestion;
 
+import Clases.PiezaEntity;
+import Conexiones.Conexiones;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 /**
  * @author unknown
@@ -14,7 +19,33 @@ public class BuscarNombre extends JFrame {
     public BuscarNombre() {
         initComponents();
     }
+    ArrayList<PiezaEntity> piezas;
 
+    private void botonBusqueda(ActionEvent e) {
+        // TODO add your code here
+
+        if (!textoBusqueda.getText().equals("")) {
+            piezas = Conexiones.listaPosiblesPiezas(textoBusqueda.getText(), "nombre");
+            construirSpinner();
+        }
+    }
+
+    public void construirSpinner() {
+        comboCodigos.removeAllItems();
+        for (PiezaEntity pieza : piezas) {
+            comboCodigos.addItem(pieza.getNombre());
+        }
+
+    }
+
+    private void comboCodigos(ActionEvent e) {
+        // TODO add your code here
+        PiezaEntity pieza = piezas.get(comboCodigos.getSelectedIndex());
+        textoArea.setText("CODIGO :" + pieza.getCodigoPieza() + "\n"
+                + "NOMBRE :" + pieza.getNombre() + "\n" +
+                "PRECIO :" + pieza.getPrecio() + "\n" +
+                "DESCRIPCION :" + pieza.getDescripcion() + "\n");
+    }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label1 = new JLabel();
