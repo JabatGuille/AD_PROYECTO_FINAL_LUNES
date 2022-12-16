@@ -37,7 +37,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "CIUDADCONSULTAPROVEEDOR"
-							"text": "Ciudad"
+							"text": "Direccion"
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CIUDADCONSULTAPROVEEDOR", true ) )
 						} )
 					} )
@@ -56,10 +56,12 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "CODIGOCONSULTASPIEZASmenu"
 							"text": "Código"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CODIGOCONSULTASPIEZASmenu", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "NOMBRECONSULTAPIEZA"
 							"text": "Nombre"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "NOMBRECONSULTAPIEZA", true ) )
 						} )
 					} )
 				} )
@@ -77,14 +79,17 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "CODIGOPROYECTO"
 							"text": "Código"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CODIGOPROYECTO", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "NOMBREPROYECTO"
 							"text": "Nombre"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "NOMBREPROYECTO", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JMenuItem" ) {
 							name: "CIUDADPROYECTO"
 							"text": "Ciudad"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "CIUDADPROYECTO", true ) )
 						} )
 					} )
 				} )

@@ -41,7 +41,7 @@ public class Piezas extends JFrame {
     private void Insertar(ActionEvent e) {
         if (!CodigoPiezaTexto.getText().equals("") && !NombrePiezaTexto.getText().equals("") && !DescripcionPiezaTexto.getText().equals("")) {
             PiezaEntity pieza = new PiezaEntity();
-            pieza.setCodigoPieza(String.valueOf(CodigoPiezaTexto.getText()));
+            pieza.setCodigoPieza(String.valueOf(CodigoPiezaTexto.getText()).toUpperCase());
             pieza.setNombre(NombrePiezaTexto.getText());
             pieza.setDescripcion(DescripcionPiezaTexto.getText());
             pieza.setPrecio(Double.parseDouble(SpinnerPrecioPieza.getValue().toString()));
@@ -53,7 +53,7 @@ public class Piezas extends JFrame {
     private void Modificar(ActionEvent e) {
         if (!CodigoPiezaTexto.getText().equals("") && !NombrePiezaTexto.getText().equals("") && !DescripcionPiezaTexto.getText().equals("")) {
             PiezaEntity pieza = new PiezaEntity();
-            pieza.setCodigoPieza(String.valueOf(CodigoPiezaTexto.getText()));
+            pieza.setCodigoPieza(String.valueOf(CodigoPiezaTexto.getText()).toUpperCase());
             pieza.setNombre(NombrePiezaTexto.getText());
             pieza.setDescripcion(DescripcionPiezaTexto.getText());
             pieza.setPrecio(Double.parseDouble(SpinnerPrecioPieza.getValue().toString()));
@@ -65,11 +65,11 @@ public class Piezas extends JFrame {
         // TODO add your code here
         if (!CodigoPiezaTexto.getText().equals("") && !NombrePiezaTexto.getText().equals("") && !DescripcionPiezaTexto.getText().equals("")) {
             PiezaEntity pieza = new PiezaEntity();
-            pieza.setCodigoPieza(String.valueOf(CodigoPiezaTexto.getText()));
+            pieza.setCodigoPieza(String.valueOf(CodigoPiezaTexto.getText()).toUpperCase());
             pieza.setNombre(NombrePiezaTexto.getText());
             pieza.setDescripcion(DescripcionPiezaTexto.getText());
             pieza.setPrecio(Double.parseDouble(SpinnerPrecioPieza.getValue().toString()));
-            Conexiones.eliminarPieza(pieza.getCodigoPieza());
+            Conexiones.eliminarPieza(pieza.getCodigoPieza().toUpperCase());
         }
     }
 

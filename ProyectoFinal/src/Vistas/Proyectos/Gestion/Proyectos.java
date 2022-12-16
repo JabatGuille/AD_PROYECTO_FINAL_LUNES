@@ -35,7 +35,7 @@ public class Proyectos extends JFrame {
     private void Insertar(ActionEvent e) {
         if (!CodigoProyectoTexto.getText().equals("") && !NombreProyectoTexto.getText().equals("") && !CiudadProyectoTexto.getText().equals("")) {
             ProyectoEntity proyecto = new ProyectoEntity();
-            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText());
+            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText().toUpperCase());
             proyecto.setNombre(NombreProyectoTexto.getText());
             proyecto.setCiudad(CiudadProyectoTexto.getText());
             Conexiones.insertarProyecto(proyecto);
@@ -46,7 +46,7 @@ public class Proyectos extends JFrame {
     private void Modificar(ActionEvent e) {
         if (!CodigoProyectoTexto.getText().equals("") && !NombreProyectoTexto.getText().equals("") && !CiudadProyectoTexto.getText().equals("")) {
             ProyectoEntity proyecto = new ProyectoEntity();
-            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText());
+            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText().toUpperCase());
             proyecto.setNombre(NombreProyectoTexto.getText());
             proyecto.setCiudad(CiudadProyectoTexto.getText());
             Conexiones.modificarProyecto(proyecto);
@@ -57,7 +57,7 @@ public class Proyectos extends JFrame {
         // TODO add your code here
         if (!CodigoProyectoTexto.getText().equals("") && !NombreProyectoTexto.getText().equals("") && !CiudadProyectoTexto.getText().equals("")) {
             ProyectoEntity proyecto = new ProyectoEntity();
-            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText());
+            proyecto.setCodigoProyecto(CodigoProyectoTexto.getText().toUpperCase());
             proyecto.setNombre(NombreProyectoTexto.getText());
             proyecto.setCiudad(CiudadProyectoTexto.getText());
             Conexiones.eliminarProyecto(proyecto.getCodigoProyecto());

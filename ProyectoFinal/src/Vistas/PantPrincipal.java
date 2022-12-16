@@ -9,6 +9,7 @@ import Vistas.Proveedores.Gestion.BuscarCodigo;
 import Vistas.Proveedores.Gestion.BuscarDireccion;
 import Vistas.Proveedores.Gestion.BuscarNombre;
 import Vistas.Proveedores.Gestion.Proveedores;
+import Vistas.Proyectos.Gestion.BuscarCiudad;
 import Vistas.Proyectos.Gestion.Proyectos;
 
 import java.awt.*;
@@ -63,6 +64,37 @@ public class PantPrincipal extends JFrame {
         BuscarDireccion direccion = new BuscarDireccion();
         direccion.setVisible(true);
 
+    }
+
+    private void CODIGOCONSULTASPIEZASmenu(ActionEvent e) {
+        // TODO add your code here
+        Vistas.Piezas.Gestion.BuscarCodigo codigo = new Vistas.Piezas.Gestion.BuscarCodigo();
+        codigo.setVisible(true);
+    }
+
+    private void NOMBRECONSULTAPIEZA(ActionEvent e) {
+        // TODO add your code here
+        Vistas.Piezas.Gestion.BuscarNombre nombre = new Vistas.Piezas.Gestion.BuscarNombre();
+        nombre.setVisible(true);
+
+    }
+
+    private void CODIGOPROYECTO(ActionEvent e) {
+        // TODO add your code here
+        Vistas.Proyectos.Gestion.BuscarCodigo codigo = new Vistas.Proyectos.Gestion.BuscarCodigo();
+        codigo.setVisible(true);
+    }
+
+    private void NOMBREPROYECTO(ActionEvent e) {
+        // TODO add your code here
+        Vistas.Proyectos.Gestion.BuscarNombre nombre = new Vistas.Proyectos.Gestion.BuscarNombre();
+        nombre.setVisible(true);
+    }
+
+    private void CIUDADPROYECTO(ActionEvent e) {
+        // TODO add your code here
+        BuscarCiudad ciudad = new BuscarCiudad();
+        ciudad.setVisible(true);
     }
 
     private void initComponents() {
@@ -151,10 +183,12 @@ public class PantPrincipal extends JFrame {
 
                     //---- CODIGOCONSULTASPIEZASmenu ----
                     CODIGOCONSULTASPIEZASmenu.setText("C\u00f3digo");
+                    CODIGOCONSULTASPIEZASmenu.addActionListener(e -> CODIGOCONSULTASPIEZASmenu(e));
                     CONSULTASPIEZASmenu.add(CODIGOCONSULTASPIEZASmenu);
 
                     //---- NOMBRECONSULTAPIEZA ----
                     NOMBRECONSULTAPIEZA.setText("Nombre");
+                    NOMBRECONSULTAPIEZA.addActionListener(e -> NOMBRECONSULTAPIEZA(e));
                     CONSULTASPIEZASmenu.add(NOMBRECONSULTAPIEZA);
                 }
                 PIEZASmenu.add(CONSULTASPIEZASmenu);
@@ -176,14 +210,17 @@ public class PantPrincipal extends JFrame {
 
                     //---- CODIGOPROYECTO ----
                     CODIGOPROYECTO.setText("C\u00f3digo");
+                    CODIGOPROYECTO.addActionListener(e -> CODIGOPROYECTO(e));
                     CONSULTAPROYECTOSmenu.add(CODIGOPROYECTO);
 
                     //---- NOMBREPROYECTO ----
                     NOMBREPROYECTO.setText("Nombre");
+                    NOMBREPROYECTO.addActionListener(e -> NOMBREPROYECTO(e));
                     CONSULTAPROYECTOSmenu.add(NOMBREPROYECTO);
 
                     //---- CIUDADPROYECTO ----
                     CIUDADPROYECTO.setText("Ciudad");
+                    CIUDADPROYECTO.addActionListener(e -> CIUDADPROYECTO(e));
                     CONSULTAPROYECTOSmenu.add(CIUDADPROYECTO);
                 }
                 PROYECTOSmenu.add(CONSULTAPROYECTOSmenu);

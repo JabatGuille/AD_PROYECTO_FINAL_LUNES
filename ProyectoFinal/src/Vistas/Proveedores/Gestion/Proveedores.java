@@ -36,7 +36,7 @@ public class Proveedores extends JFrame {
     private void Insertar(ActionEvent e) {
         if (!CodigoProveedorTexto.getText().equals("") && !NombreProveedorTexto.getText().equals("") && !ApellidoProveedorTexto.getText().equals("") && !DireccionProveedorTexto.getText().equals("")) {
             ProveedorEntity proveedor = new ProveedorEntity();
-            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText());
+            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText().toUpperCase());
             proveedor.setNombre(NombreProveedorTexto.getText());
             proveedor.setApellido(ApellidoProveedorTexto.getText());
             proveedor.setDireccion(DireccionProveedorTexto.getText());
@@ -48,7 +48,7 @@ public class Proveedores extends JFrame {
     private void Modificar(ActionEvent e) {
         if (!CodigoProveedorTexto.getText().equals("") && !NombreProveedorTexto.getText().equals("") && !ApellidoProveedorTexto.getText().equals("") && !DireccionProveedorTexto.getText().equals("")) {
             ProveedorEntity proveedor = new ProveedorEntity();
-            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText());
+            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText().toUpperCase());
             proveedor.setNombre(NombreProveedorTexto.getText());
             proveedor.setApellido(ApellidoProveedorTexto.getText());
             proveedor.setDireccion(DireccionProveedorTexto.getText());
@@ -60,11 +60,11 @@ public class Proveedores extends JFrame {
         // TODO add your code here
         if (!CodigoProveedorTexto.getText().equals("") && !NombreProveedorTexto.getText().equals("") && !ApellidoProveedorTexto.getText().equals("") && !DireccionProveedorTexto.getText().equals("")) {
             ProveedorEntity proveedor = new ProveedorEntity();
-            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText());
+            proveedor.setCodigoProveedor(CodigoProveedorTexto.getText().toUpperCase());
             proveedor.setNombre(NombreProveedorTexto.getText());
             proveedor.setApellido(ApellidoProveedorTexto.getText());
             proveedor.setDireccion(DireccionProveedorTexto.getText());
-            Conexiones.eliminarProveedor(proveedor.getCodigoProveedor());
+            Conexiones.eliminarProveedor(proveedor.getCodigoProveedor().toUpperCase());
         }
     }
 

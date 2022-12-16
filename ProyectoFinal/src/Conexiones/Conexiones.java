@@ -19,8 +19,15 @@ public class Conexiones {
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(pieza);
-        tx.commit();
+        PiezaEntity piezaModificada;
+        pieza.setCodigoPieza(pieza.getCodigoPieza().toUpperCase());
+        piezaModificada = recuperarPieza(pieza.getCodigoPieza());
+        if (piezaModificada == null) {
+            session.save(pieza);
+            tx.commit();
+        } else {
+            JOptionPane.showMessageDialog(null, "La pieza ya existe", "Error piezas", JOptionPane.ERROR_MESSAGE);
+        }
         session.close();
 
     }
@@ -30,7 +37,7 @@ public class Conexiones {
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-
+        pieza.setCodigoPieza(pieza.getCodigoPieza().toUpperCase());
         PiezaEntity piezaModificada;
         piezaModificada = recuperarPieza(pieza.getCodigoPieza());
         if (piezaModificada != null) {
@@ -68,8 +75,7 @@ public class Conexiones {
 
         PiezaEntity piezaBorrar;
 
-        piezaBorrar = recuperarPieza(cod_pieza);
-
+        piezaBorrar = recuperarPieza(cod_pieza.toUpperCase());
 
         if (piezaBorrar != null) {
             session.delete(piezaBorrar);
@@ -85,8 +91,15 @@ public class Conexiones {
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(proveedor);
-        tx.commit();
+        ProveedorEntity proveedorModificada;
+        proveedor.setCodigoProveedor(proveedor.getCodigoProveedor().toUpperCase());
+        proveedorModificada = recuperarProveedor(proveedor.getCodigoProveedor());
+        if (proveedorModificada == null) {
+            session.save(proveedor);
+            tx.commit();
+        } else {
+            JOptionPane.showMessageDialog(null, "El proveedor ya existe", "Error proveedor", JOptionPane.ERROR_MESSAGE);
+        }
         session.close();
 
     }
@@ -96,7 +109,7 @@ public class Conexiones {
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-
+        proveedor.setCodigoProveedor(proveedor.getCodigoProveedor().toUpperCase());
         ProveedorEntity proveedorModificada;
         proveedorModificada = recuperarProveedor(proveedor.getCodigoProveedor());
         if (proveedorModificada != null) {
@@ -134,7 +147,7 @@ public class Conexiones {
 
         ProveedorEntity proveedorBorrar;
 
-        proveedorBorrar = recuperarProveedor(cod_proveedor);
+        proveedorBorrar = recuperarProveedor(cod_proveedor.toUpperCase());
 
 
         if (proveedorBorrar != null) {
@@ -151,8 +164,15 @@ public class Conexiones {
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(proyecto);
-        tx.commit();
+        ProyectoEntity proyectoModificado;
+        proyecto.setCodigoProyecto(proyecto.getCodigoProyecto().toUpperCase());
+        proyectoModificado = recuperarProyecto(proyecto.getCodigoProyecto());
+        if (proyectoModificado == null) {
+            session.save(proyecto);
+            tx.commit();
+        } else {
+            JOptionPane.showMessageDialog(null, "El proyecto ya existe", "Error proyecto", JOptionPane.ERROR_MESSAGE);
+        }
         session.close();
 
     }
@@ -162,7 +182,7 @@ public class Conexiones {
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-
+        proyecto.setCodigoProyecto(proyecto.getCodigoProyecto().toUpperCase());
         ProyectoEntity proyectoModificado;
         proyectoModificado = recuperarProyecto(proyecto.getCodigoProyecto());
         if (proyectoModificado != null) {
@@ -199,7 +219,7 @@ public class Conexiones {
 
         ProyectoEntity proyectoBorrar;
 
-        proyectoBorrar = recuperarProyecto(cod_proyecto);
+        proyectoBorrar = recuperarProyecto(cod_proyecto.toUpperCase());
 
 
         if (proyectoBorrar != null) {
