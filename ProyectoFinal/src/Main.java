@@ -1,5 +1,6 @@
 import Vistas.Ayuda;
 import Vistas.GestionGlobal.GestionRelacion;
+import Vistas.GestionGlobal.SuministrosProveedor;
 import Vistas.PantallaPrincipal;
 import Vistas.Proveedores.Gestion.Proveedor;
 import Vistas.Proyectos.Gestion.BusquedaCiudad;
@@ -177,7 +178,12 @@ public class Main {
             frame.setVisible(true);
         });
         jItemGestionGlobalSuministroProveedor.addActionListener(e -> {
-
+            JFrame frame = new JFrame("GESTION GLOBAL SUMINISTROS PROVEEDOR");
+            frame.setContentPane(new SuministrosProveedor().panel_main);
+            frame.pack();
+            frame.setSize(600, 600);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
         });
         jItemGestionGlobalSuministrosPieza.addActionListener(e -> {
 

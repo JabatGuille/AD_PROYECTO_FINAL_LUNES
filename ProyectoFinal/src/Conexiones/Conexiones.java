@@ -110,6 +110,29 @@ public class Conexiones {
         return gestiones;
     }
 
+    public static ArrayList<GestionEntity> listaGestionCantidad(String codigo, String columna) {
+        ArrayList<GestionEntity> gestiones = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        for (Object value : session.createSQLQuery("SELECT * FROM gestion where " + columna + "='" + codigo + "'").list()) {
+            Object[] lista = (Object[]) value;
+            GestionEntity p = new GestionEntity();
+            p.setIdGestion((Integer) lista[0]);
+            p.setCdProveedor((String) lista[1]);
+            p.setCdPieza((String) lista[2]);
+            p.setCdProyecto((String) lista[3]);
+            p.setCantidad((Integer) lista[4]);
+            gestiones.add(p);
+        }
+        tx.commit();
+        session.close();
+        return gestiones;
+    }
+
+
     public static void insertarPieza(PiezaEntity pieza) {
         Configuration cfg = new Configuration().configure();
         SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
