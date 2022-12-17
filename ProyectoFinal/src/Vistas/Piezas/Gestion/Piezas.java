@@ -165,7 +165,6 @@ public class Piezas extends JFrame {
                 EliminarButton.setText("Eliminar");
                 EliminarButton.addActionListener(e -> {
                     Eliminar(e);
-                    Eliminar(e);
                 });
                 PanelGestion.add(EliminarButton);
                 EliminarButton.setBounds(310, 310, 110, 30);

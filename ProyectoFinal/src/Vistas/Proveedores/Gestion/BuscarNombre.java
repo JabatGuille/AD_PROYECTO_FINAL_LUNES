@@ -32,7 +32,7 @@ public class BuscarNombre extends JFrame {
     }
 
     public void construirSpinner() {
-        comboCodigos.removeAllItems();
+        comboCodigos.removeAll();
         for (ProveedorEntity proveedore : proveedores) {
             comboCodigos.addItem(proveedore.getNombre());
         }
@@ -43,9 +43,9 @@ public class BuscarNombre extends JFrame {
         // TODO add your code here
         ProveedorEntity proveedor = proveedores.get(comboCodigos.getSelectedIndex());
         textoArea.setText("CODIGO :" + proveedor.getCodigoProveedor() + "\n"
-                + "NOMBRE :" + proveedor.getNombre()+"\n"+
-                "APELLIDOS :"+proveedor.getApellido()+"\n"+
-                "DIRECCION :"+proveedor.getDireccion()+"\n");
+                + "NOMBRE :" + proveedor.getNombre() + "\n" +
+                "APELLIDOS :" + proveedor.getApellido() + "\n" +
+                "DIRECCION :" + proveedor.getDireccion() + "\n");
     }
 
     private void initComponents() {
@@ -76,9 +76,9 @@ public class BuscarNombre extends JFrame {
 
         //---- comboCodigos ----
         comboCodigos.addActionListener(e -> {
-			comboCodigos(e);
-			comboCodigos(e);
-		});
+            comboCodigos(e);
+            comboCodigos(e);
+        });
         contentPane.add(comboCodigos);
         comboCodigos.setBounds(60, 105, 525, comboCodigos.getPreferredSize().height);
 
@@ -95,7 +95,7 @@ public class BuscarNombre extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);

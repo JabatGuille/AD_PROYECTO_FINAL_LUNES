@@ -32,7 +32,7 @@ public class BuscarCodigo extends JFrame {
     }
 
     public void construirSpinner() {
-        comboCodigos.removeAllItems();
+        comboCodigos.removeAll();
         for (ProveedorEntity proveedore : proveedores) {
             comboCodigos.addItem(proveedore.getCodigoProveedor());
         }

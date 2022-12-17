@@ -19,7 +19,8 @@ public class BuscarCodigo extends JFrame {
     public BuscarCodigo() {
         initComponents();
     }
-    ArrayList<ProyectoEntity> proyectos;
+
+    ArrayList<ProyectoEntity> proyectos = new ArrayList<>();
 
     private void botonBusqueda(ActionEvent e) {
         // TODO add your code here
@@ -31,7 +32,7 @@ public class BuscarCodigo extends JFrame {
     }
 
     public void construirSpinner() {
-        comboCodigos.removeAllItems();
+        comboCodigos.removeAll();
         for (ProyectoEntity proyecto : proyectos) {
             comboCodigos.addItem(proyecto.getCodigoProyecto());
         }
@@ -45,12 +46,13 @@ public class BuscarCodigo extends JFrame {
                 + "NOMBRE :" + proyecto.getNombre() + "\n" +
                 "CIUDAD :" + proyecto.getCiudad() + "\n");
     }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label1 = new JLabel();
         textoBusqueda = new JTextField();
         botonBusqueda = new JButton();
-        comboCodigos = new JComboBox();
+        comboCodigos = new JComboBox<String>();
         scrollPane1 = new JScrollPane();
         textoArea = new JTextArea();
 
@@ -68,7 +70,11 @@ public class BuscarCodigo extends JFrame {
         //---- botonBusqueda ----
         botonBusqueda.setText("Buscar Proyecto");
         contentPane.add(botonBusqueda);
+        botonBusqueda.addActionListener(e -> botonBusqueda(e));
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
+
+        //---- comboCodigos ----
+        comboCodigos.addActionListener(e -> comboCodigos(e));
         contentPane.add(comboCodigos);
         comboCodigos.setBounds(60, 105, 525, comboCodigos.getPreferredSize().height);
 
@@ -85,7 +91,7 @@ public class BuscarCodigo extends JFrame {
         {
             // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < contentPane.getComponentCount(); i++) {
+            for (int i = 0; i < contentPane.getComponentCount(); i++) {
                 Rectangle bounds = contentPane.getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -105,7 +111,7 @@ public class BuscarCodigo extends JFrame {
     private JLabel label1;
     private JTextField textoBusqueda;
     private JButton botonBusqueda;
-    private JComboBox comboCodigos;
+    private JComboBox<String> comboCodigos;
     private JScrollPane scrollPane1;
     private JTextArea textoArea;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on

@@ -25,6 +25,7 @@ public class Conexiones {
         if (piezaModificada == null) {
             session.save(pieza);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "La pieza se ha insertado");
         } else {
             JOptionPane.showMessageDialog(null, "La pieza ya existe", "Error piezas", JOptionPane.ERROR_MESSAGE);
         }
@@ -46,6 +47,8 @@ public class Conexiones {
             piezaModificada.setDescripcion(pieza.getDescripcion());
             session.update(piezaModificada);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "La pieza se ha modifica");
+
         } else {
             JOptionPane.showMessageDialog(null, "La pieza no existe", "Error pieza", JOptionPane.ERROR_MESSAGE);
         }
@@ -80,6 +83,7 @@ public class Conexiones {
         if (piezaBorrar != null) {
             session.delete(piezaBorrar);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "La pieza se ha eliminado");
         } else {
             JOptionPane.showMessageDialog(null, "La pieza no se pudo borrar porque no existe.", "Error pieza", JOptionPane.ERROR_MESSAGE);
         }
@@ -97,6 +101,7 @@ public class Conexiones {
         if (proveedorModificada == null) {
             session.save(proveedor);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "El proveedor se ha insertado");
         } else {
             JOptionPane.showMessageDialog(null, "El proveedor ya existe", "Error proveedor", JOptionPane.ERROR_MESSAGE);
         }
@@ -118,6 +123,8 @@ public class Conexiones {
             proveedorModificada.setDireccion(proveedor.getDireccion());
             session.update(proveedorModificada);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "El proveedor se ha modificado");
+
         } else {
             JOptionPane.showMessageDialog(null, "El proveedor no existe", "Error proveedor", JOptionPane.ERROR_MESSAGE);
         }
@@ -153,6 +160,7 @@ public class Conexiones {
         if (proveedorBorrar != null) {
             session.delete(proveedorBorrar);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "El proveedor se ha eliminado");
         } else {
             JOptionPane.showMessageDialog(null, "El proveedor no se pudo borrar porque no exitste.", "Error proveedor", JOptionPane.ERROR_MESSAGE);
         }
@@ -170,6 +178,7 @@ public class Conexiones {
         if (proyectoModificado == null) {
             session.save(proyecto);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "El proyecto se ha insertado");
         } else {
             JOptionPane.showMessageDialog(null, "El proyecto ya existe", "Error proyecto", JOptionPane.ERROR_MESSAGE);
         }
@@ -190,6 +199,7 @@ public class Conexiones {
             proyectoModificado.setCiudad(proyecto.getCiudad());
             session.update(proyectoModificado);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "El proyecto se ha modificado");
         } else {
             JOptionPane.showMessageDialog(null, "El proyecto no existe", "Error proyecto", JOptionPane.ERROR_MESSAGE);
         }
@@ -225,6 +235,7 @@ public class Conexiones {
         if (proyectoBorrar != null) {
             session.delete(proyectoBorrar);
             tx.commit();
+            JOptionPane.showMessageDialog(null, "El proyecto se ha borrado");
         } else {
             JOptionPane.showMessageDialog(null, "El proyecto no se pudo borrar porque no existe.", "Error proyecto", JOptionPane.ERROR_MESSAGE);
         }
@@ -323,7 +334,7 @@ public class Conexiones {
         Transaction tx = session.beginTransaction();
 
         busqueda = "'%" + busqueda.toLowerCase() + "%'";
-        for (Object value : session.createSQLQuery("SELECT * FROM pieza  WHERE LOWER(" + campo + ") LIKE " + busqueda + "").list()) {
+        for (Object value : session.createSQLQuery("SELECT * FROM pieza WHERE LOWER(" + campo + ") LIKE " + busqueda + "").list()) {
             Object[] lista = (Object[]) value;
             PiezaEntity p = new PiezaEntity();
             p.setCodigoPieza((String) lista[0]);

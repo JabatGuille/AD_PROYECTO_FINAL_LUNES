@@ -31,7 +31,7 @@ public class BuscarNombre extends JFrame {
     }
 
     public void construirSpinner() {
-        comboCodigos.removeAllItems();
+        comboCodigos.removeAll();
         for (PiezaEntity pieza : piezas) {
             comboCodigos.addItem(pieza.getNombre());
         }
@@ -68,8 +68,12 @@ public class BuscarNombre extends JFrame {
 
         //---- botonBusqueda ----
         botonBusqueda.setText("Buscar Pieza");
+        botonBusqueda.addActionListener(e -> botonBusqueda(e));
         contentPane.add(botonBusqueda);
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
+
+        //---- comboCodigos ----
+        comboCodigos.addActionListener(e -> comboCodigos(e));
         contentPane.add(comboCodigos);
         comboCodigos.setBounds(60, 105, 525, comboCodigos.getPreferredSize().height);
 

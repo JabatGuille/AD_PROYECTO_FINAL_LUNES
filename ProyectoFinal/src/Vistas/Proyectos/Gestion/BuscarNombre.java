@@ -31,7 +31,7 @@ public class BuscarNombre extends JFrame {
     }
 
     public void construirSpinner() {
-        comboCodigos.removeAllItems();
+        comboCodigos.removeAll();
         for (ProyectoEntity proyecto : proyectos) {
             comboCodigos.addItem(proyecto.getNombre());
         }
@@ -68,7 +68,11 @@ public class BuscarNombre extends JFrame {
         //---- botonBusqueda ----
         botonBusqueda.setText("Buscar Proyecto");
         contentPane.add(botonBusqueda);
+        botonBusqueda.addActionListener(e->botonBusqueda(e));
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
+
+        //---- comboCodigos ----
+        comboCodigos.addActionListener(e -> comboCodigos(e));
         contentPane.add(comboCodigos);
         comboCodigos.setBounds(60, 105, 525, comboCodigos.getPreferredSize().height);
 

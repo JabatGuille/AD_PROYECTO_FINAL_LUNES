@@ -27,13 +27,13 @@ public class BuscarCodigo extends JFrame {
         // TODO add your code here
 
         if (!textoBusqueda.getText().equals("")) {
-            piezas = Conexiones.listaPosiblesPiezas(textoBusqueda.getText(), "codigo_pieza");
+            piezas = Conexiones.listaPosiblesPiezas(textoBusqueda.getText().toUpperCase(), "codigo_pieza");
             construirSpinner();
         }
     }
 
     public void construirSpinner() {
-        comboCodigos.removeAllItems();
+        comboCodigos.removeAll();
         for (PiezaEntity pieza : piezas) {
             comboCodigos.addItem(pieza.getCodigoPieza());
         }
@@ -71,8 +71,14 @@ public class BuscarCodigo extends JFrame {
 
         //---- botonBusqueda ----
         botonBusqueda.setText("Buscar Pieza");
+        botonBusqueda.addActionListener(e ->
+                botonBusqueda(e)
+        );
         contentPane.add(botonBusqueda);
         botonBusqueda.setBounds(new Rectangle(new Point(525, 35), botonBusqueda.getPreferredSize()));
+
+        //---- comboCodigos ----
+        comboCodigos.addActionListener(e -> comboCodigos(e));
         contentPane.add(comboCodigos);
         comboCodigos.setBounds(60, 105, 525, comboCodigos.getPreferredSize().height);
 
