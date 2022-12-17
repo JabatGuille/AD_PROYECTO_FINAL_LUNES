@@ -1,5 +1,6 @@
 package Conexiones;
 
+import Clases.GestionEntity;
 import Clases.PiezaEntity;
 import Clases.ProveedorEntity;
 import Clases.ProyectoEntity;
@@ -14,6 +15,100 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Conexiones {
+    public static void insertarGestion(GestionEntity gestion) {
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        GestionEntity gestionEntity = recuperarGestion(gestion.getCdProveedor().toUpperCase(), gestion.getCdPieza().toUpperCase(), gestion.getCdProyecto().toUpperCase());
+        if (gestionEntity == null) {
+            session.save(gestion);
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "La gestion se ha insertado");
+        } else {
+            JOptionPane.showMessageDialog(null, "La gestion ya existe", "Error gestiones", JOptionPane.ERROR_MESSAGE);
+        }
+        session.close();
+
+    }
+
+    public static void eliminarGestion(GestionEntity gestion) {
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        GestionEntity gestionEntity = recuperarGestion(gestion.getCdProveedor().toUpperCase(), gestion.getCdPieza().toUpperCase(), gestion.getCdProyecto().toUpperCase());
+        if (gestionEntity != null) {
+            gestion.setIdGestion(gestionEntity.getIdGestion());
+            session.delete(gestion);
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "La gestion se ha borrado");
+        } else {
+            JOptionPane.showMessageDialog(null, "La gestion no existe", "Error gestiones", JOptionPane.ERROR_MESSAGE);
+        }
+        session.close();
+    }
+
+    public static void modificarGestion(GestionEntity gestion) {
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        GestionEntity gestionEntity = recuperarGestion(gestion.getCdProveedor().toUpperCase(), gestion.getCdPieza().toUpperCase(), gestion.getCdProyecto().toUpperCase());
+        if (gestionEntity != null) {
+            gestion.setIdGestion(gestionEntity.getIdGestion());
+            session.update(gestion);
+            tx.commit();
+            JOptionPane.showMessageDialog(null, "La gestion se ha modificado");
+        } else {
+            JOptionPane.showMessageDialog(null, "La gestion no existe", "Error gestiones", JOptionPane.ERROR_MESSAGE);
+        }
+        session.close();
+    }
+
+    public static GestionEntity recuperarGestion(String cod_proveedor, String cod_pieza, String cod_proyecto) {
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        GestionEntity gestion = null;
+        for (Object value : session.createSQLQuery("SELECT * FROM gestion where CDProveedor = '" + cod_proveedor + "' and CDPieza = '" + cod_pieza + "' and CDProyecto = '" + cod_proyecto + "'").list()) {
+            Object[] lista = (Object[]) value;
+            gestion = new GestionEntity();
+            gestion.setIdGestion((Integer) lista[0]);
+            gestion.setCdProyecto((String) lista[1]);
+            gestion.setCdPieza((String) lista[2]);
+            gestion.setCdProyecto((String) lista[3]);
+            gestion.setCantidad((Integer) lista[4]);
+        }
+
+        tx.commit();
+        session.close();
+        return gestion;
+    }
+
+    public static ArrayList<GestionEntity> listaGestion() {
+        ArrayList<GestionEntity> gestiones = new ArrayList<>();
+        Configuration cfg = new Configuration().configure();
+        SessionFactory sessionFactory = cfg.buildSessionFactory(new StandardServiceRegistryBuilder().configure().build());
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        for (Object value : session.createSQLQuery("SELECT * FROM gestion").list()) {
+            Object[] lista = (Object[]) value;
+            GestionEntity p = new GestionEntity();
+            p.setIdGestion((Integer) lista[0]);
+            p.setCdProveedor((String) lista[1]);
+            p.setCdPieza((String) lista[2]);
+            p.setCdProyecto((String) lista[3]);
+            p.setCantidad((Integer) lista[4]);
+            gestiones.add(p);
+        }
+        tx.commit();
+        session.close();
+        return gestiones;
+    }
 
     public static void insertarPieza(PiezaEntity pieza) {
         Configuration cfg = new Configuration().configure();

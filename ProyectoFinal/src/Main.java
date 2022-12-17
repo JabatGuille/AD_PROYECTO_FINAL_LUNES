@@ -1,4 +1,5 @@
 import Vistas.Ayuda;
+import Vistas.GestionGlobal.GestionRelacion;
 import Vistas.PantallaPrincipal;
 import Vistas.Proveedores.Gestion.Proveedor;
 import Vistas.Proyectos.Gestion.BusquedaCiudad;
@@ -159,6 +160,32 @@ public class Main {
         //Gestion Global
 
         JMenu jMenuGestionGlobal = new JMenu("Gestion Global");
+        JMenuItem jItemGestionGlobalCrearRelacion = new JMenuItem("Piezas, Proveedores y Proyectos");
+        JMenuItem jItemGestionGlobalSuministroProveedor = new JMenuItem("Suministros por Proveedor");
+        JMenuItem jItemGestionGlobalSuministrosPieza = new JMenuItem("Suministros por Piezas");
+        JMenuItem jItemGestionGlobalEstadisticas = new JMenuItem("Estadísticas");
+        jMenuGestionGlobal.add(jItemGestionGlobalCrearRelacion);
+        jMenuGestionGlobal.add(jItemGestionGlobalSuministroProveedor);
+        jMenuGestionGlobal.add(jItemGestionGlobalSuministrosPieza);
+        jMenuGestionGlobal.add(jItemGestionGlobalEstadisticas);
+        jItemGestionGlobalCrearRelacion.addActionListener(e -> {
+            JFrame frame = new JFrame("GESTION GLOBAL CREAR RELACION");
+            frame.setContentPane(new GestionRelacion().panel_main);
+            frame.pack();
+            frame.setSize(600, 600);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
+        jItemGestionGlobalSuministroProveedor.addActionListener(e -> {
+
+        });
+        jItemGestionGlobalSuministrosPieza.addActionListener(e -> {
+
+        });
+        jItemGestionGlobalEstadisticas.addActionListener(e -> {
+
+        });
+
         jmenuBar.add(jMenuGestionGlobal);
 
         //Ayuda
