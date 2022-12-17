@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -81,9 +82,13 @@ public class Conexiones {
         piezaBorrar = recuperarPieza(cod_pieza.toUpperCase());
 
         if (piezaBorrar != null) {
-            session.delete(piezaBorrar);
-            tx.commit();
-            JOptionPane.showMessageDialog(null, "La pieza se ha eliminado");
+            try {
+                session.delete(piezaBorrar);
+                tx.commit();
+                JOptionPane.showMessageDialog(null, "La pieza se ha eliminado");
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(null, "Ha intentado borrar una pieza que tiene relacion con otros objetos", "Error borrar Pieza", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "La pieza no se pudo borrar porque no existe.", "Error pieza", JOptionPane.ERROR_MESSAGE);
         }
@@ -158,9 +163,13 @@ public class Conexiones {
 
 
         if (proveedorBorrar != null) {
-            session.delete(proveedorBorrar);
-            tx.commit();
-            JOptionPane.showMessageDialog(null, "El proveedor se ha eliminado");
+            try {
+                session.delete(proveedorBorrar);
+                tx.commit();
+                JOptionPane.showMessageDialog(null, "El proveedor se ha eliminado");
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(null, "Ha intentado borrar un proveedor que tiene relacion con otros objetos", "Error borrar Proveedor", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "El proveedor no se pudo borrar porque no exitste.", "Error proveedor", JOptionPane.ERROR_MESSAGE);
         }
@@ -233,9 +242,13 @@ public class Conexiones {
 
 
         if (proyectoBorrar != null) {
-            session.delete(proyectoBorrar);
-            tx.commit();
-            JOptionPane.showMessageDialog(null, "El proyecto se ha borrado");
+            try {
+                session.delete(proyectoBorrar);
+                tx.commit();
+                JOptionPane.showMessageDialog(null, "El proyecto se ha borrado");
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(null, "Ha intentado borrar un proyecto que tiene relacion con otros objetos", "Error borrar Proyecto", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "El proyecto no se pudo borrar porque no existe.", "Error proyecto", JOptionPane.ERROR_MESSAGE);
         }
