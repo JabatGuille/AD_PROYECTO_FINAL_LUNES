@@ -18,7 +18,7 @@ ciudad varchar(40)
 );
 
 Create table Gestion(
-Id_gestion integer primary key,
+Id_gestion integer primary key AUTO_INCREMENT,
 CDProveedor varchar(6),
 CDPieza varchar(6),
 CDProyecto varchar(6),

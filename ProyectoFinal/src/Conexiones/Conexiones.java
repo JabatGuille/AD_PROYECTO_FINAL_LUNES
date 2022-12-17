@@ -8,8 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.exception.ConstraintViolationException;
 
+import javax.persistence.PersistenceException;
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -86,7 +86,7 @@ public class Conexiones {
                 session.delete(piezaBorrar);
                 tx.commit();
                 JOptionPane.showMessageDialog(null, "La pieza se ha eliminado");
-            } catch (ConstraintViolationException e) {
+            } catch (PersistenceException e) {
                 JOptionPane.showMessageDialog(null, "Ha intentado borrar una pieza que tiene relacion con otros objetos", "Error borrar Pieza", JOptionPane.ERROR_MESSAGE);
             }
         } else {
@@ -167,7 +167,7 @@ public class Conexiones {
                 session.delete(proveedorBorrar);
                 tx.commit();
                 JOptionPane.showMessageDialog(null, "El proveedor se ha eliminado");
-            } catch (ConstraintViolationException e) {
+            } catch (PersistenceException e) {
                 JOptionPane.showMessageDialog(null, "Ha intentado borrar un proveedor que tiene relacion con otros objetos", "Error borrar Proveedor", JOptionPane.ERROR_MESSAGE);
             }
         } else {
@@ -246,7 +246,7 @@ public class Conexiones {
                 session.delete(proyectoBorrar);
                 tx.commit();
                 JOptionPane.showMessageDialog(null, "El proyecto se ha borrado");
-            } catch (ConstraintViolationException e) {
+            } catch (PersistenceException e) {
                 JOptionPane.showMessageDialog(null, "Ha intentado borrar un proyecto que tiene relacion con otros objetos", "Error borrar Proyecto", JOptionPane.ERROR_MESSAGE);
             }
         } else {

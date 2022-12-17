@@ -27,7 +27,13 @@ public class Proveedor {
     ArrayList<ProveedorEntity> proveedores;
 
     public void setTabla() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
         model.addColumn("Codigo Proveedor");
         model.addColumn("Nombre");
         model.addColumn("Apellido");

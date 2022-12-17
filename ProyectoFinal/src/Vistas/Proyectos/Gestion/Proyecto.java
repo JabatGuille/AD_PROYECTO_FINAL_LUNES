@@ -24,8 +24,13 @@ public class Proyecto {
     ArrayList<ProyectoEntity> proyectos;
 
     public void setTabla() {
-
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
         model.addColumn("Codigo Proyecto");
         model.addColumn("Nombre");
         model.addColumn("Ciudad");
