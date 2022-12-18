@@ -27,8 +27,14 @@ public class Pieza {
     private JButton bajasButton;
     ArrayList<PiezaEntity> piezas;
 
+    public void setSpinner() {
+        SpinnerModel modeltau = new SpinnerNumberModel(0.00, 0.00, 10000.00, 1.00);
+        SpinnerPrecioPieza.setModel(modeltau);
+        ((JSpinner.NumberEditor) SpinnerPrecioPieza.getEditor()).getFormat().setMaximumFractionDigits(8);
+    }
+
     public void setTabla() {
-        DefaultTableModel model = new DefaultTableModel(){
+        DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 //all cells false
@@ -47,6 +53,7 @@ public class Pieza {
     }
 
     public Pieza() {
+        setSpinner();
         Listado.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {

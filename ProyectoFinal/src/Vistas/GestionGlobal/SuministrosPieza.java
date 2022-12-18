@@ -48,7 +48,7 @@ public class SuministrosPieza {
                 HashMap<String, String> numeroproveedor = new HashMap<>();
                 for (GestionEntity gestion : gestiones) {
                     numeroproyectos.put(gestion.getCdProyecto(), gestion.getCdProyecto());
-                    numeroproveedor.put(gestion.getCdPieza(), gestion.getCdProveedor());
+                    numeroproveedor.put(gestion.getCdProveedor(), gestion.getCdProveedor());
                     total = total + gestion.getCantidad();
                 }
                 totalCantidad.setText(String.valueOf(total));

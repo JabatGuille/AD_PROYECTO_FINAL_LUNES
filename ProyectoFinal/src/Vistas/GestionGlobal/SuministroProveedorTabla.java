@@ -44,11 +44,10 @@ public class SuministroProveedorTabla {
                 max = pcustom.codigo_proyecto.size() - 1;
             }
         }
+        for (int i = 0; i <= max; i++) {
+            model.addColumn("Proyecto" + i);
+        }
         for (PiezaCustom pcustom : custom.values()) {
-            for (int i = 0; i <= max; i++) {
-                model.addColumn("Proyecto" + i);
-            }
-
             Object[] row = new Object[4 + pcustom.codigo_proyecto.size()];
             row[0] = pcustom.codiog_pieza;
             row[1] = pcustom.nombre;
