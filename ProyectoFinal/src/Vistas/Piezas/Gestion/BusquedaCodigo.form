@@ -13,7 +13,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Escribe la direccion o parte de la direccion"/>
+          <text value="Escribe el codigo o parte del codigo"/>
         </properties>
       </component>
       <component id="2c749" class="javax.swing.JButton" binding="botonBusqueda">
@@ -21,7 +21,7 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Buscar Proyecto"/>
+          <text value="Buscar Pieza"/>
         </properties>
       </component>
       <component id="11ef8" class="javax.swing.JTextField" binding="textoBusqueda">
