@@ -2,6 +2,7 @@ package Vistas.GestionGlobal;
 
 import Clases.GestionEntity;
 import Clases.ProveedorEntity;
+import ClasesCustom.Singleton;
 import Conexiones.Conexiones;
 
 import javax.swing.*;
@@ -41,7 +42,7 @@ public class SuministrosProveedor {
                 for (GestionEntity gestion : gestiones) {
                     total = total + gestion.getCantidad();
                 }
-               totalPiezas.setText(String.valueOf(total));
+                totalPiezas.setText(String.valueOf(total));
                 totalProyectos.setText(String.valueOf(gestiones.size()));
             } else {
                 JOptionPane.showMessageDialog(null, "Este proveedor no tiene relaciones", "Error relacion", JOptionPane.ERROR_MESSAGE);
@@ -58,7 +59,20 @@ public class SuministrosProveedor {
     public SuministrosProveedor() {
         setCombo();
         botonVerPiezas.addActionListener(e -> {
-
+            if (!textoNombre.getText().equals("") &&
+                    !textoApellido.getText().equals("") &&
+                    !textoDireccion.getText().equals("")) {
+                Singleton singleton = Singleton.getInstance();
+                singleton.codigo_proveedor = proveedores.get(comboProveedor.getSelectedIndex()).getCodigoProveedor();
+                JFrame frame = new JFrame("Tabla suministros Proveedor");
+                frame.setContentPane(new SuministroProveedorTabla().panel_main);
+                frame.pack();
+                frame.setSize(600, 600);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un proveedor", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
         comboProveedor.addActionListener(e -> {
             setTexto();
