@@ -1,5 +1,6 @@
 import Vistas.Ayuda;
 import Vistas.GestionGlobal.GestionRelacion;
+import Vistas.GestionGlobal.SuministrosPieza;
 import Vistas.GestionGlobal.SuministrosProveedor;
 import Vistas.PantallaPrincipal;
 import Vistas.Proveedores.Gestion.Proveedor;
@@ -186,7 +187,12 @@ public class Main {
             frame.setVisible(true);
         });
         jItemGestionGlobalSuministrosPieza.addActionListener(e -> {
-
+            JFrame frame = new JFrame("GESTION GLOBAL SUMINISTROS PIEZA");
+            frame.setContentPane(new SuministrosPieza().panel_main);
+            frame.pack();
+            frame.setSize(600, 600);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
         });
         jItemGestionGlobalEstadisticas.addActionListener(e -> {
 
